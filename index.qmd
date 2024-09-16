@@ -22,12 +22,12 @@ Start by filling in the following table for the numbers 1:30 manually, to get a 
 
 | Input | Output |
 |-------|--------|
-| 1     |        |
-| 2     |        |
-| 3     |        |
-| 4     |        |
-| 5     |        |
-| 6     |        |
+| 1     |1       |
+| 2     |2       |
+| 3     |Fizz    |
+| 4     |4       |
+| 5     |Buzz    |
+| 6     |Fizz    |
 | 7     |        |
 | 8     |        |
 | 9     |        |
@@ -57,7 +57,7 @@ Start by filling in the following table for the numbers 1:30 manually, to get a 
 
 On paper or using a tool such as [https://excalidraw.com](https://excalidraw.com), create a program flow map for the sequence of if-statements you need to evaluate for fizzbuzz. Add the picture to the folder containing this file, and name the picture flowchart.png. Add the picture to Git and commit/push your changes. 
 
-![Program Flow map for FizzBuzz](flowchart.png)
+![Program Flow map for FizzBuzz](untitled-2024-09--12-2115.png)
 
 In the chunk below, write code which will solve this problem for a single value `x`. You should be able to change the value of x at the top of the chunk and still get the correct answer.
 
@@ -65,7 +65,16 @@ In the chunk below, write code which will solve this problem for a single value 
 x <- 3
 
 # FizzBuzz code goes here
-
+if(x%%3==0 && x%%5==0){
+  print("Fizzbuzz")
+} else if(x%%3==0){
+  print("Fizz")
+} else if(x%%5==0){
+  print("Buzz")
+} else{
+  print(x)
+}
+  
 ```
 
 
@@ -73,7 +82,14 @@ x <- 3
 x = 3
 
 # FizzBuzz code goes here
-
+if x % 3 == 0 and x % 5 == 0:
+    print("FizzBuzz")
+elif x % 3 == 0:
+    print("Fizz")
+elif x % 5 == 0:
+    print("Buzz")
+else:
+    print(x)
 ```
 
 Modify the code above so that the result is stored in a value `y`.
@@ -82,7 +98,15 @@ Modify the code above so that the result is stored in a value `y`.
 x <- 3
 y <- NA
 # FizzBuzz code goes here
-
+if(x%%3==0 && x%%5==0){
+  y="Fizzbuzz"
+} else if(x%%3==0){
+  y="Fizz"
+} else if(x%%5==0){
+  y="Buzz"
+} else{
+  y=x
+}
 
 
 print(paste("For x = ", x, " my code produces ", y, sep = ""))
@@ -94,7 +118,14 @@ import numpy as np
 x = 3
 y = np.nan
 # FizzBuzz code goes here
-
+if x % 3 == 0 and x % 5 == 0:
+    y="FizzBuzz"
+elif x % 3 == 0:
+    y="Fizz"
+elif x % 5 == 0:
+    y="Buzz"
+else:
+    y=x
 
 
 print("For x = "+ str(x)+ " my code produces "+ str(y))
@@ -108,11 +139,19 @@ The code in the previous problem only solves FizzBuzz for a single value of `x`.
 You can copy/paste code from previous chunks to make this chunk easier.
 
 ```{r vector-fizzbuzz-r, echo = T}
-xx <- 1:30
+xx <- 101:130
 yy <- rep(NA, times = 30)
-
-# FizzBuzz code goes here
-
+for (i in 1:length(xx)) {
+  if (xx[i] %% 3 == 0 && xx[i] %% 5 == 0) {
+    yy[i] <- "FizzBuzz"
+  } else if (xx[i] %% 3 == 0) {
+    yy[i] <- "Fizz"
+  } else if (xx[i] %% 5 == 0) {
+    yy[i] <- "Buzz"
+  } else {
+    yy[i] <- xx[i]
+  }
+}
 
 # Printing the results in a data frame
 res <- cbind(x = xx, result = yy)
@@ -142,6 +181,19 @@ yy <- rep(NA, 10)
 
 fizzbuzz <- function(x) {
   # Your code goes here
+  for (i in 1:length(x)) {
+  if (x[i] %% 3 == 0 && x[i] %% 5 == 0) {
+    yy[i] <- "FizzBuzz"
+  } else if (x[i] %% 3 == 0) {
+    yy[i] <- "Fizz"
+  } else if (x[i] %% 5 == 0) {
+    yy[i] <- "Buzz"
+  } else {
+    yy[i] <- x[i]
+  }
+    
+}
+ return(yy) 
 }
 
 yy <- fizzbuzz(x = xx)
@@ -198,7 +250,22 @@ yy <- rep(NA, 10)
 
 fizzbuzz <- function(x) {
   # Your code goes here
+  stopifnot(is.numeric(x))
+   for (i in 1:length(x)) {
+  if (x[i] %% 3 == 0 && x[i] %% 5 == 0) {
+    yy[i] <- "FizzBuzz"
+  } else if (x[i] %% 3 == 0) {
+    yy[i] <- "Fizz"
+  } else if (x[i] %% 5 == 0) {
+    yy[i] <- "Buzz"
+  } else {
+    yy[i] <- x[i]
+  }
+    
 }
+ return(yy) 
+}
+
 
 yy <- fizzbuzz(x = xx)
 
